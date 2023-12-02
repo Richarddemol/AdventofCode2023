@@ -1,6 +1,6 @@
 file = open('../input/Day2_input.txt', 'r')
 gameNumber = 0
-sumGameNumber = 0
+sumPower = 0
 
 while True:
     headline = file.readline()
@@ -11,7 +11,10 @@ while True:
     headline = headline.replace(" ", "")
     headline = headline.split(":")[1]
     headline = headline.split(";")
-    fail = 0
+    amountRed = 0
+    amountBlue = 0
+    amountGreen = 0
+
     for game in headline: 
         dices = game.split(',')
         for dice in dices:
@@ -20,18 +23,25 @@ while True:
                 if c.isdigit():
                     num = num + c
             if "red" in dice:
-                if int(num) >= 13:
-                    fail = 1
+                if int(num) > amountRed:
+                    amountRed = int(num)
             if "blue" in dice:
-                if int(num) >= 15:
-                    fail = 1
+                if int(num) > amountBlue:
+                    amountBlue = int(num)
             if "green" in dice:
-                if int(num) >= 14:
-                    fail = 1
-    if fail == 0: 
-        sumGameNumber += gameNumber
+                if int(num) > amountGreen:
+                    amountGreen = int(num)
 
-print(sumGameNumber)
+    if amountRed == 0:
+        amountRed = 1
+    if amountBlue == 0: 
+        amountBlue = 1
+    if amountGreen == 0:
+        amountGreen = 1
+
+    sumPower += amountRed * amountBlue * amountGreen
+
+print(sumPower)
 
         
             
