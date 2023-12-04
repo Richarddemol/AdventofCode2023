@@ -32,15 +32,11 @@ while True:
     for number in range(1, winningNumbersInCard+1): 
         cardUpdateNum = card + number 
         updatedNumber = cardDict.get(cardUpdateNum) + (1 * cardDict.get(card))
-        print(cardUpdateNum)
-        print(cardDict.get(cardUpdateNum))
-        print(updatedNumber)
         cardDict.update({cardUpdateNum: updatedNumber})
 
 for number in range(1, 203):
     sum += cardDict.get(number)
-
-print(cardDict)   
+    
 print(sum)
 
 
